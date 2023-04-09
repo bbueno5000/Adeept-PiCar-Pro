@@ -65,11 +65,39 @@ for _ in range(1, 4):
 for _ in range(1, 4):
     if os.system("sudo apt install -y libgstreamer1.0-dev") == 0:
         break
+	
+for _ in range(1, 4):
+    if os.system("sudo apt install -y libavcodec-dev") == 0:
+        break
+	
+for _ in range(1, 4):
+    if os.system("sudo apt install -y libavformat-dev") == 0:
+        break	
 
 for _ in range(1, 4):
-    if os.system("sudo apt install -y libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libxvidcore-dev libx264-dev libdc1394-22-dev libgstreamer-plugins-base1.0-dev") == 0:
+    if os.system("sudo apt install -y libswscale-dev") == 0:
         break
 
+for _ in range(1, 4):
+    if os.system("sudo apt install -y libv4l-dev") == 0:
+        break
+
+for _ in range(1, 4):
+    if os.system("sudo apt install -y libxvidcore-dev") == 0:
+        break
+
+for _ in range(1, 4):
+    if os.system("sudo apt install -y libx264-dev") == 0:
+        break
+
+for _ in range(1, 4):
+    if os.system("sudo apt install -y libdc1394-22-dev") == 0:
+        break
+
+for _ in range(1, 4):
+    if os.system("sudo apt install -y libgstreamer-plugins-base1.0-dev") == 0:
+        break
+		
 for _ in range(1, 4):
     if os.system("sudo pip3 install imutils") == 0:
         break
