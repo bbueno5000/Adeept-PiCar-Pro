@@ -1,4 +1,5 @@
 #!/usr/bin/env/python
+
 # File name   : switch.py
 # Production  : HAT
 # Website     : www.gewbot.com
@@ -8,14 +9,18 @@
 import RPi.GPIO as GPIO
 import time
 
-def switchSetup():
-    GPIO.setwarnings(False)
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setup(5, GPIO.OUT)
-    GPIO.setup(6, GPIO.OUT)
-    GPIO.setup(13, GPIO.OUT)
+def set_all_switch_off():
+    """
+    TODO: docstring
+    """
+    switch(1,0)
+    switch(2,0)
+    switch(3,0)
 
 def switch(port, status):
+    """
+    TODO: docstring
+    """
     if port == 1:
         if status == 1:
             GPIO.output(5, GPIO.HIGH)
@@ -40,10 +45,16 @@ def switch(port, status):
     else:
         print('Wrong Command: Example--switch(3, 1)->to switch on port3')
 
-def set_all_switch_off():
-    switch(1,0)
-    switch(2,0)
-    switch(3,0)
+def switchSetup():
+    """
+    TODO: docstring
+    """
+    GPIO.setwarnings(False)
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(5, GPIO.OUT)
+    GPIO.setup(6, GPIO.OUT)
+    GPIO.setup(13, GPIO.OUT)
+
 
 if __name__ == "__main__":
     switchSetup()

@@ -39,38 +39,28 @@ functionMode = 0
 speed_set = 100
 rad = 0.5
 turnWiggle = 60
-
 scGear = RPIservo.ServoCtrl()
 scGear.moveInit()
-
 P_sc = RPIservo.ServoCtrl()
 P_sc.start()
-
 T_sc = RPIservo.ServoCtrl()
 T_sc.start()
-
 H_sc = RPIservo.ServoCtrl()
 H_sc.start()
-
 G_sc = RPIservo.ServoCtrl()
 G_sc.start()
-
 # modeSelect = 'none'
 modeSelect = 'PT'
-
 init_pwm = []
 for i in range(16):
     init_pwm.append(scGear.initPos[i])
-
 # init_pwm0 = scGear.initPos[0]
 # init_pwm1 = scGear.initPos[1]
 # init_pwm2 = scGear.initPos[2]
 # init_pwm3 = scGear.initPos[3]
 # init_pwm4 = scGear.initPos[4]
-
 fuc = functions.Functions()
 fuc.start()
-
 curpath = os.path.realpath(__file__)
 thisPath = "/" + os.path.dirname(curpath)
 

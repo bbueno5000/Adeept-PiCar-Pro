@@ -10,8 +10,11 @@ import os
 import threading
 
 app = Flask(__name__)
+
 CORS(app, supports_credentials=True)
+
 camera = Camera()
+
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 def gen(camera):

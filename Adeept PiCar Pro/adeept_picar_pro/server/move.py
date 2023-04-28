@@ -28,30 +28,12 @@ right_backward = 1
 pwn_A = 0
 pwm_B = 0
 
-def motorStop():#Motor stops
-    GPIO.output(Motor_A_Pin1, GPIO.LOW)
-    GPIO.output(Motor_A_Pin2, GPIO.LOW)
-    GPIO.output(Motor_B_Pin1, GPIO.LOW)
-    GPIO.output(Motor_B_Pin2, GPIO.LOW)
-    GPIO.output(Motor_A_EN, GPIO.LOW)
-    GPIO.output(Motor_B_EN, GPIO.LOW)
-
-def setup():#Motor initialization
-    global pwm_A, pwm_B
-    GPIO.setwarnings(False)
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setup(Motor_A_EN, GPIO.OUT)
-    GPIO.setup(Motor_B_EN, GPIO.OUT)
-    GPIO.setup(Motor_A_Pin1, GPIO.OUT)
-    GPIO.setup(Motor_A_Pin2, GPIO.OUT)
-    GPIO.setup(Motor_B_Pin1, GPIO.OUT)
-    GPIO.setup(Motor_B_Pin2, GPIO.OUT)
+def destroy():
+    """
+    TODO: docstring
+    """
     motorStop()
-    try:
-        pwm_A = GPIO.PWM(Motor_A_EN, 1000)
-        pwm_B = GPIO.PWM(Motor_B_EN, 1000)
-    except:
-        pass
+    GPIO.cleanup() # Release resource
 
 def motor_left(status, direction, speed):
     """
@@ -75,7 +57,7 @@ def motor_left(status, direction, speed):
 
 def motor_right(status, direction, speed):
     """
-#Motor 1 positive and negative rotation
+    Motor 1 positive and negative rotation
     """
     if status == 0: # stop
         GPIO.output(Motor_A_Pin1, GPIO.LOW)
@@ -94,8 +76,21 @@ def motor_right(status, direction, speed):
             pwm_A.ChangeDutyCycle(speed)
     return direction
 
+def motorStop():
+    """
+    Motor stops
+    """
+    GPIO.output(Motor_A_Pin1, GPIO.LOW)
+    GPIO.output(Motor_A_Pin2, GPIO.LOW)
+    GPIO.output(Motor_B_Pin1, GPIO.LOW)
+    GPIO.output(Motor_B_Pin2, GPIO.LOW)
+    GPIO.output(Motor_A_EN, GPIO.LOW)
+    GPIO.output(Motor_B_EN, GPIO.LOW)
 
-def move(speed, direction, turn, radius=0.6):   # 0 < radius <= 1  
+def move(speed, direction, turn, radius=0.6): # 0 < radius <= 1
+    """
+    TODO: docstring
+    """
     #speed = 100
     if direction == 'forward':
         if turn == 'right':
@@ -129,12 +124,25 @@ def move(speed, direction, turn, radius=0.6):   # 0 < radius <= 1
     else:
         pass
 
-
-
-
-def destroy():
+def setup():
+    """
+    Motor initialization
+    """
+    global pwm_A, pwm_B
+    GPIO.setwarnings(False)
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(Motor_A_EN, GPIO.OUT)
+    GPIO.setup(Motor_B_EN, GPIO.OUT)
+    GPIO.setup(Motor_A_Pin1, GPIO.OUT)
+    GPIO.setup(Motor_A_Pin2, GPIO.OUT)
+    GPIO.setup(Motor_B_Pin1, GPIO.OUT)
+    GPIO.setup(Motor_B_Pin2, GPIO.OUT)
     motorStop()
-    GPIO.cleanup()             # Release resource
+    try:
+        pwm_A = GPIO.PWM(Motor_A_EN, 1000)
+        pwm_B = GPIO.PWM(Motor_B_EN, 1000)
+    except:
+        pass
 
 
 if __name__ == '__main__':
@@ -147,4 +155,3 @@ if __name__ == '__main__':
         destroy()
     except KeyboardInterrupt:
         destroy()
-
