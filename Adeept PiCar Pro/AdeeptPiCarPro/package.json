@@ -1,0 +1,20 @@
+{
+  "name": "adeept-pi-car-pro",
+  "version": "0.0.0",
+  "description": "AdeeptPiCarPro",
+  "main": "server.js",
+  "author": {
+    "name": ""
+  },
+  "devDependencies": {
+    "eslint": "^8.21.0"
+  },
+  "eslintConfig": {},
+  "dependencies": {
+    "webpack": "^5.81.0",
+    "webpack-cli": "^5.0.2"
+  },
+  "scripts": {
+    "build": "webpack"
+  }
+}

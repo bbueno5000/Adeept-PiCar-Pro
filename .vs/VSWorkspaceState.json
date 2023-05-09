@@ -2,9 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\Adeept PiCar Pro",
-    "\\Adeept PiCar Pro\\adeept_picar_pro",
-    "\\Adeept PiCar Pro\\adeept_picar_pro\\server"
+    "\\Adeept PiCar Pro\\AdeeptPiCarPro",
+    "\\Adeept PiCar Pro\\AdeeptPiCarPro\\server",
+    "\\Adeept PiCar Pro\\AdeeptPiCarPro\\server\\dist",
+    "\\Adeept PiCar Pro\\AdeeptPiCarPro\\server\\dist\\css"
   ],
-  "SelectedNode": "\\Adeept PiCar Pro\\adeept_picar_pro\\server\\PID.py",
+  "SelectedNode": "\\Adeept PiCar Pro\\AdeeptPiCarPro\\server\\dist\\css\\chunk-vendors.7b51feb1.css",
   "PreviewInSolutionExplorer": false
 }
