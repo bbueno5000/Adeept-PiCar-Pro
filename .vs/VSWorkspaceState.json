@@ -3,10 +3,8 @@
     "",
     "\\Adeept PiCar Pro",
     "\\Adeept PiCar Pro\\AdeeptPiCarPro",
-    "\\Adeept PiCar Pro\\AdeeptPiCarPro\\server",
-    "\\Adeept PiCar Pro\\AdeeptPiCarPro\\server\\dist",
-    "\\Adeept PiCar Pro\\AdeeptPiCarPro\\server\\dist\\css"
+    "\\Adeept PiCar Pro\\AdeeptPiCarPro\\server"
   ],
-  "SelectedNode": "\\Adeept PiCar Pro\\AdeeptPiCarPro\\server\\dist\\css\\chunk-vendors.7b51feb1.css",
+  "SelectedNode": "\\Adeept PiCar Pro\\AdeeptPiCarPro\\server\\base_camera.py",
   "PreviewInSolutionExplorer": false
 }

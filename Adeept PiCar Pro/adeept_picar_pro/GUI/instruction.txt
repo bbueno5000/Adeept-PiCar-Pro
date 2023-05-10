@@ -1,0 +1,48 @@
+instruction
+
+
+openCV mode off
+Camera.modeSelect = 'none'
+
+
+openCV visual inspection
+Camera.modeSelect = 'findlineCV'
+
+
+openCV color lookup
+Camera.modeSelect = 'findColor'
+
+
+openCV motion detection
+Camera.modeSelect = 'watchDog'
+
+
+set lookup color，variables are H S V (Use 0-255 to represent)
+Camera.colorFindSet(H, S, V)
+
+
+Visual line following motor control
+Camera.CVRunSet(1) # motor movement
+Camera.CVRunSet(1) # motor stationary
+
+
+Visual line inspection line1 position setting
+Camera.linePosSet_1(pos) # pos value can be 0-480（screen vertical resolution），when it is 0，at the top of the screen，When it is 480, it will be at the bottom of the screen
+
+
+Visual line inspection line2 position setting
+Camera.linePosSet_2(pos) #ditto
+
+
+Visual line inspection, line color setting
+Camera.colorSet(0)  # find the black line on a white background
+Camera.colorSet(255) # find black and white lines
+
+
+Whether the visual line is rendered in black and white
+Camera.randerSet(1) # render as black and white
+Camera.randerSet(0) # normal screen
+
+
+Vision line steering threshold setting
+Camera.errorSet(err) # err the default is 20，The higher the threshold, the less sensitive the steering is, suitable for finding thick lines the lower the threshold, the more suitable for finding thin lines
