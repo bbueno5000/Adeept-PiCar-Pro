@@ -20,7 +20,7 @@ window.addEventListener("gamepaddisconnected", (e) => {
 
 window.addEventListener("DOMContentLoaded", () => {
     const app = document.querySelector(".app");
-    const websocket = new WebSocket("ws://localhost:8001/");
+    const websocket = new WebSocket("ws://http://192.168.1.164:5000/");
     sendMoves(app, websocket);
 });
 
