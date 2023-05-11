@@ -3,8 +3,10 @@
     "",
     "\\Adeept PiCar Pro",
     "\\Adeept PiCar Pro\\adeept_picar_pro",
-    "\\Adeept PiCar Pro\\adeept_picar_pro\\server"
+    "\\Adeept PiCar Pro\\adeept_picar_pro\\server",
+    "\\Adeept PiCar Pro\\adeept_picar_pro\\server\\dist",
+    "\\Adeept PiCar Pro\\adeept_picar_pro\\server\\dist\\js"
   ],
-  "SelectedNode": "\\Adeept PiCar Pro\\adeept_picar_pro\\server\\webServer.py",
+  "SelectedNode": "\\Adeept PiCar Pro\\adeept_picar_pro\\server\\dist\\index.html",
   "PreviewInSolutionExplorer": false
 }
