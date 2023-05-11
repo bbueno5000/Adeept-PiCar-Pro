@@ -206,7 +206,6 @@ async def recv_msg(websocket):
         #    scGear.moveInit() # servo back initial position
         try:
             data = json.loads(data)
-            print(data)
         except Exception as e:
             print('not A JSON')
         if not data:

@@ -50,9 +50,10 @@ function sendMoves(board, websocket) {
     if (buttonPressed(gp.buttons[0])) {
         console.log('up')
         const event = {
-            type: "play",
-            column: parseInt(3, 10),
-        };
+            'status': 'ok',
+            'title': '',
+            'data': 'forward'
+        }
         websocket.send(JSON.stringify(event));
     }
 }

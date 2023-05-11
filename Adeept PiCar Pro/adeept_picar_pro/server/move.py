@@ -87,9 +87,9 @@ def motorStop():
     GPIO.output(Motor_A_EN, GPIO.LOW)
     GPIO.output(Motor_B_EN, GPIO.LOW)
 
-def move(speed, direction, turn, radius=0.6): # 0 < radius <= 1
+def move(speed, direction, turn, radius=0.6):
     """
-    TODO: docstring
+    0 < radius <= 1
     """
     #speed = 100
     if direction == 'forward':
