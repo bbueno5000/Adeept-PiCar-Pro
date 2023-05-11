@@ -193,9 +193,9 @@ async def recv_msg(websocket):
     turn_command = 'no'
     while True: 
         response = {
-            'status' : 'ok',
-            'title' : '',
-            'data' : None}
+            'status': 'ok',
+            'title': '',
+            'data': None}
         data = ''
         data = await websocket.recv()
         #try:
@@ -206,6 +206,7 @@ async def recv_msg(websocket):
         #    scGear.moveInit() # servo back initial position
         try:
             data = json.loads(data)
+            print(data)
         except Exception as e:
             print('not A JSON')
         if not data:
@@ -414,7 +415,7 @@ def wifi_check():
     global mark_test
     try:
         s = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
-        s.connect(("1.1.1.1",80))
+        s.connect(("1.1.1.1", 80))
         ipaddr_check=s.getsockname()[0]
         s.close()
         print(ipaddr_check)

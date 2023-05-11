@@ -2,9 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Adeept PiCar Pro",
-    "\\Adeept PiCar Pro\\AdeeptPiCarPro",
-    "\\Adeept PiCar Pro\\AdeeptPiCarPro\\server"
+    "\\Adeept PiCar Pro\\adeept_picar_pro",
+    "\\Adeept PiCar Pro\\adeept_picar_pro\\server"
   ],
-  "SelectedNode": "\\Adeept PiCar Pro\\AdeeptPiCarPro\\server\\base_camera.py",
+  "SelectedNode": "\\Adeept PiCar Pro\\adeept_picar_pro\\server\\webServer.py",
   "PreviewInSolutionExplorer": false
 }

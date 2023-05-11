@@ -1,4 +1,4 @@
-console.log('hello world')
+console.log('gamepad')
 
 window.addEventListener("gamepadconnected", (e) => {
     console.log(
@@ -18,8 +18,17 @@ window.addEventListener("gamepaddisconnected", (e) => {
     );
 });
 
-let a = 0;
+window.addEventListener("DOMContentLoaded", () => {
+    const app = document.querySelector(".app");
+    const websocket = new WebSocket("ws://localhost:8001/");
+    sendMoves(app, websocket);
+});
 
+/**
+ * 
+ * @param {any} b
+ * @returns
+ */
 function buttonPressed(b) {
     if (typeof b === "object") {
         return b.pressed;
@@ -27,22 +36,31 @@ function buttonPressed(b) {
     return b === 1.0;
 }
 
-function update() {
-
+/**
+ * 
+ * @param {any} board
+ * @param {any} websocket
+ */
+function sendMoves(board, websocket) {
     const gamepads = navigator.getGamepads()
-
     if (!gamepads) {
         return;
     }
-
     const gp = gamepads[0];
-
     if (buttonPressed(gp.buttons[0])) {
-        a++;
         console.log('up')
+        const event = {
+            type: "play",
+            column: parseInt(3, 10),
+        };
+        websocket.send(JSON.stringify(event));
     }
-
-        window.requestAnimationFrame(update)
 }
 
-window.requestAnimationFrame(update)
+/**
+ * 
+ * @param {any} message
+ */
+function showMessage(message) {
+    window.setTimeout(() => window.alert(message), 50);
+}

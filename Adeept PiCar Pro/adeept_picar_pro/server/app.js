@@ -2083,9 +2083,10 @@
                         if (t) {
                             try {
                                 t = JSON.stringify(t)
-                            } catch (e) { }
-                            this.websock.send(t),
-                                this.changeWsContent("")
+                            } catch (e) {
+
+                            }
+                            this.websock.send(t), this.changeWsContent("")
                         }
                     },
                     websocketclose: function (t) {
