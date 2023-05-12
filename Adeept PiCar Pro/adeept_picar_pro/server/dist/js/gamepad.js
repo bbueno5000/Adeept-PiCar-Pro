@@ -8,6 +8,10 @@ window.addEventListener("gamepadconnected", (e) => {
         e.gamepad.buttons.length,
         e.gamepad.axes.length
     );
+    const app = document.querySelector(".app");
+    var t = "ws://" + location.hostname + ":8888";
+    const websocket = new WebSocket(t);
+    sendMoves(app, websocket);
 });
 
 window.addEventListener("gamepaddisconnected", (e) => {
@@ -18,13 +22,12 @@ window.addEventListener("gamepaddisconnected", (e) => {
     );
 });
 
-window.addEventListener("DOMContentLoaded", () => {
-    const app = document.querySelector(".app");
-    var t = "ws://" + location.hostname + ":8888";
-    const websocket = new WebSocket(t);
-    websocket.send("admin:123456")
-    sendMoves(app, websocket);
-});
+//window.addEventListener("DOMContentLoaded", () => {
+//    const app = document.querySelector(".app");
+//    var t = "ws://" + location.hostname + ":8888";
+//    const websocket = new WebSocket(t);
+//    sendMoves(app, websocket);
+//});
 
 /**
  * 
