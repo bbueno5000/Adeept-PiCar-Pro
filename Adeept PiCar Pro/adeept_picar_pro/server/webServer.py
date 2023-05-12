@@ -488,7 +488,8 @@ if __name__ == '__main__':
         pass
     while 1:
         wifi_check()
-        try: # start server, waiting for client
+        try:
+            # start server, waiting for client
             start_server = websockets.serve(main_logic, '0.0.0.0', 8888)
             asyncio.get_event_loop().run_until_complete(start_server)
             print('waiting for connection...')
