@@ -5,7 +5,7 @@ window.addEventListener("DOMContentLoaded", () => {
     var t = "ws://" + location.hostname + ":8888/echo";
     const websocket = new WebSocket(t);
     websocket.onmessage = function (e) { console.log(e.data); };
-    websocket.onopen = () => websocket.send('hello');
+    websocket.onopen = () => websocket.send("admin:123456");
     sendMoves(websocket);
 });
 
