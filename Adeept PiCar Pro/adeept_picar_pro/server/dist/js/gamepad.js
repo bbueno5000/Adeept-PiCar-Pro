@@ -8,10 +8,10 @@ window.addEventListener("gamepadconnected", (e) => {
         e.gamepad.buttons.length,
         e.gamepad.axes.length
     );
-    const app = document.querySelector(".app");
     var t = "ws://" + location.hostname + ":8888";
     const websocket = new WebSocket(t);
-    sendMoves(app, websocket);
+    websocket.send("admin:123456")
+    sendMoves(websocket);
 });
 
 window.addEventListener("gamepaddisconnected", (e) => {
@@ -46,7 +46,7 @@ function buttonPressed(b) {
  * @param {any} board
  * @param {any} websocket
  */
-function sendMoves(board, websocket) {
+function sendMoves(websocket) {
     const gamepads = navigator.getGamepads()
     if (!gamepads) {
         return;
