@@ -1,17 +1,20 @@
 console.log('gamepad')
 
+window.addEventListener("DOMContentLoaded", () => {
+    //const app = document.querySelector(".app");
+    var t = "ws://" + location.hostname + ":8888/echo";
+    const websocket = new WebSocket(t);
+    websocket.onmessage = function (e) { console.log(e.data); };
+    websocket.onopen = () => websocket.send('hello');
+    sendMoves(websocket);
+});
+
 window.addEventListener("gamepadconnected", (e) => {
     console.log(
-        "Gamepad connected at index %d: %s. %d buttons, %d axes.",
+        "Gamepad connected at index %d: %s",
         e.gamepad.index,
-        e.gamepad.id,
-        e.gamepad.buttons.length,
-        e.gamepad.axes.length
+        e.gamepad.id
     );
-    var t = "ws://" + location.hostname + ":8888";
-    const websocket = new WebSocket(t);
-    websocket.send("admin:123456")
-    sendMoves(websocket);
 });
 
 window.addEventListener("gamepaddisconnected", (e) => {
@@ -21,13 +24,6 @@ window.addEventListener("gamepaddisconnected", (e) => {
         e.gamepad.id
     );
 });
-
-//window.addEventListener("DOMContentLoaded", () => {
-//    const app = document.querySelector(".app");
-//    var t = "ws://" + location.hostname + ":8888";
-//    const websocket = new WebSocket(t);
-//    sendMoves(app, websocket);
-//});
 
 /**
  * 

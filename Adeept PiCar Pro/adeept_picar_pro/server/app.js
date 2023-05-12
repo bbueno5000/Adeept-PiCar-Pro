@@ -2090,8 +2090,7 @@
                         }
                     },
                     websocketclose: function (t) {
-                        this.reconnectTip = !0,
-                            this.initWebSocket()
+                        this.reconnectTip = !0, this.initWebSocket()
                     }
                 }, Object(I["b"])(["changeWsResponse", "changeWsContent"])),
                 watch: {
