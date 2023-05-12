@@ -50,13 +50,15 @@ function sendMoves(websocket) {
     const gp = gamepads[0];
     if (buttonPressed(gp.buttons[0])) {
         console.log('up')
-        const event = {
-            'status': 'ok',
-            'title': '',
-            'data': 'forward'
-        }
-        websocket.send(JSON.stringify(event));
+        //const event = {
+        //    'status': 'ok',
+        //    'title': '',
+        //    'data': 'forward'
+        //}
+        //websocket.send(JSON.stringify(event));
     }
+    window.requestAnimationFrame(sendMoves)
+
 }
 
 /**
@@ -66,3 +68,5 @@ function sendMoves(websocket) {
 function showMessage(message) {
     window.setTimeout(() => window.alert(message), 50);
 }
+
+window.requestAnimationFrame(sendMoves)
