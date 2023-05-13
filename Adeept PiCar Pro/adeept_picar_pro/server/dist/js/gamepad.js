@@ -52,4 +52,5 @@ function sendMoves(websocket) {
         //}
         //websocket.send(JSON.stringify(event));
     }
+    sendMoves(websocket)
 }
