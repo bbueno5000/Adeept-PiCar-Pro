@@ -1,6 +1,9 @@
-console.log('gamepad')
 
-window.addEventListener("gamepadconnected", (e) => {
+/**
+ * 
+ * @param {any} e
+ */
+function connectHandler(e) {
     console.log(
         "Gamepad connected at index %d: %s",
         e.gamepad.index,
@@ -10,40 +13,28 @@ window.addEventListener("gamepadconnected", (e) => {
     const websocket = new WebSocket(t);
     websocket.onopen = () => websocket.send("admin:123456");
     sendMoves(websocket);
-});
+}
 
-window.addEventListener("gamepaddisconnected", (e) => {
+/**
+ * 
+ * @param {any} e
+ */
+function disconnectHandler(e) {
     console.log(
         "Gamepad disconnected from index %d: %s",
         e.gamepad.index,
         e.gamepad.id
     );
-});
-
-/**
- * 
- * @param {any} b
- * @returns
- */
-function buttonPressed(b) {
-    if (typeof b === "object") {
-        return b.pressed;
-    }
-    return b === 1.0;
 }
-
 /**
  * 
- * @param {any} board
  * @param {any} websocket
  */
 function sendMoves(websocket) {
-    const gamepads = navigator.getGamepads()
-    if (!gamepads) {
-        return;
-    }
-    const gp = gamepads[0];
-    if (buttonPressed(gp.buttons[0])) {
+    const gamepads = navigator.webkitGetGamepads()
+    if (!gamepads) { return; }
+    const gamepad = gamepads[0];
+    if (gamepad.buttons[0] === 1) {
         console.log('up')
         //const event = {
         //    'status': 'ok',
@@ -52,5 +43,7 @@ function sendMoves(websocket) {
         //}
         //websocket.send(JSON.stringify(event));
     }
-    sendMoves(websocket)
 }
+
+window.addEventListener("gamepadconnected", connectHandler);
+window.addEventListener("gamepaddisconnected", disconnectHandler);
