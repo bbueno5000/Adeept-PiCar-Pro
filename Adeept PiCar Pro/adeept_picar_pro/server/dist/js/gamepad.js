@@ -43,8 +43,11 @@ function sendMoves(websocket) {
         //}
         //websocket.send(JSON.stringify(event));
     }
-    window.requestAnimationFrame(sendMoves(websocket));
 }
 
+function buttonPressed(evt, pressed) {
+    console.log(evt.button, pressed);
+}
 window.addEventListener("gamepadconnected", connectHandler);
 window.addEventListener("gamepaddisconnected", disconnectHandler);
+window.addEventListener("MozGamepadButtonDown", function (evt) { buttonPressed(evt, true); });
