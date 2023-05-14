@@ -1,5 +1,12 @@
 "use strict";
 
+function buttonPressed(b) {
+    if (typeof b === "object") {
+        return b.pressed;
+    }
+    return b === 1.0;
+}
+
 /**
  * 
  * @param {any} e
@@ -21,7 +28,7 @@ function sendMoves(websocket) {
     const gamepads = navigator.getGamepads()
     if (!gamepads) { return; }
     const gamepad = gamepads[0];
-    if (gamepad.buttons[0] === 1) {
+    if (buttonPressed(gamepad.buttons[0])) {
         console.log('up')
         //const event = {
         //    'status': 'ok',
