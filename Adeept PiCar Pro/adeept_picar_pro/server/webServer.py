@@ -220,7 +220,7 @@ async def recv_msg(websocket):
                 response['data'] = [info.get_cpu_tempfunc(), info.get_cpu_use(), info.get_ram_info()]
             if 'wsB' in data:
                 try:
-                    set_B=data.split()
+                    set_B = data.split()
                     speed_set = int(set_B[1])
                 except:
                     pass
