@@ -1,3 +1,4 @@
+"use strict";
 
 /**
  * 
@@ -9,10 +10,6 @@ function connectHandler(e) {
         e.gamepad.index,
         e.gamepad.id
     );
-    var t = "ws://" + location.hostname + ":8888/echo";
-    const websocket = new WebSocket(t);
-    websocket.onopen = () => websocket.send("admin:123456");
-    sendMoves(websocket);
 }
 
 /**
@@ -45,9 +42,13 @@ function sendMoves(websocket) {
     }
 }
 
-function buttonPressed(evt, pressed) {
-    console.log(evt.button, pressed);
+function start() {
+    var t = "ws://" + location.hostname + ":8888/echo";
+    const websocket = new WebSocket(t);
+    websocket.onopen = () => websocket.send("admin:123456");
+    window.addEventListener("gamepadconnected", connectHandler);
+    window.addEventListener("gamepaddisconnected", disconnectHandler);
+    setInterval(function () { sendMoves(websocket); }, 100)
 }
-window.addEventListener("gamepadconnected", connectHandler);
-window.addEventListener("gamepaddisconnected", disconnectHandler);
-window.addEventListener("MozGamepadButtonDown", function (evt) { buttonPressed(evt, true); });
+
+window.onload = start;
