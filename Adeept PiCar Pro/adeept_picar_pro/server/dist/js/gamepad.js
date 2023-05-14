@@ -12,7 +12,7 @@ function connectHandler(e) {
     var t = "ws://" + location.hostname + ":8888/echo";
     const websocket = new WebSocket(t);
     websocket.onopen = () => websocket.send("admin:123456");
-    sendMoves(websocket);
+    window.requestAnimationFrame(sendMoves(websocket));
 }
 
 /**
@@ -31,7 +31,7 @@ function disconnectHandler(e) {
  * @param {any} websocket
  */
 function sendMoves(websocket) {
-    const gamepads = navigator.webkitGetGamepads()
+    const gamepads = navigator.getGamepads()
     if (!gamepads) { return; }
     const gamepad = gamepads[0];
     if (gamepad.buttons[0] === 1) {
@@ -43,6 +43,7 @@ function sendMoves(websocket) {
         //}
         //websocket.send(JSON.stringify(event));
     }
+    window.requestAnimationFrame(sendMoves(websocket));
 }
 
 window.addEventListener("gamepadconnected", connectHandler);
