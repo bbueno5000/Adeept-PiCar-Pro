@@ -29,7 +29,7 @@ function connectHandler(e) {
  * 
  * @param {any} websocket
  */
-async function sendMoves(websocket) {
+function sendMoves(websocket) {
     const gamepads = navigator.getGamepads()
     if (!gamepads) {
         return;
@@ -37,8 +37,11 @@ async function sendMoves(websocket) {
     const gamepad = gamepads[0];
     if (buttonPressed(gamepad.buttons[0])) {
         console.log('up')
-        await websocket.send(JSON.stringify('forward'));
-        await websocket.send(JSON.stringify('stop'));
+        websocket.send(JSON.stringify('forward'));
+    }
+    else if (buttonPressed(gamepad.buttons[1])) {
+        console.log('down')
+        websocket.send(JSON.stringify('stop'));
     }
 }
 
