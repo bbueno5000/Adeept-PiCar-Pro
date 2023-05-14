@@ -1,5 +1,10 @@
 "use strict";
 
+/**
+ * 
+ * @param {any} b
+ * @returns
+ */
 function buttonPressed(b) {
     if (typeof b === "object") {
         return b.pressed;
@@ -30,12 +35,12 @@ function sendMoves(websocket) {
     const gamepad = gamepads[0];
     if (buttonPressed(gamepad.buttons[0])) {
         console.log('up')
-        //const event = {
-        //    'status': 'ok',
-        //    'title': '',
-        //    'data': 'forward'
-        //}
-        //websocket.send(JSON.stringify(event));
+        const event = {
+            'status': 'ok',
+            'title': '',
+            'data': 'forward'
+        }
+        websocket.send(JSON.stringify(event));
     }
 }
 
