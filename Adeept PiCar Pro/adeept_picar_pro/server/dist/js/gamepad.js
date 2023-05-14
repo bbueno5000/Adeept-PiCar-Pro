@@ -12,7 +12,7 @@ function connectHandler(e) {
     var t = "ws://" + location.hostname + ":8888/echo";
     const websocket = new WebSocket(t);
     websocket.onopen = () => websocket.send("admin:123456");
-    window.requestAnimationFrame(sendMoves(websocket));
+    sendMoves(websocket);
 }
 
 /**
