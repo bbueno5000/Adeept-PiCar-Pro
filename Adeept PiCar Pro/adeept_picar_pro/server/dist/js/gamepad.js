@@ -10,19 +10,9 @@ function connectHandler(e) {
         e.gamepad.index,
         e.gamepad.id
     );
+    start();
 }
 
-/**
- * 
- * @param {any} e
- */
-function disconnectHandler(e) {
-    console.log(
-        "Gamepad disconnected from index %d: %s",
-        e.gamepad.index,
-        e.gamepad.id
-    );
-}
 /**
  * 
  * @param {any} websocket
@@ -42,13 +32,14 @@ function sendMoves(websocket) {
     }
 }
 
+/**
+ * 
+ */
 function start() {
     var t = "ws://" + location.hostname + ":8888/echo";
     const websocket = new WebSocket(t);
     websocket.onopen = () => websocket.send("admin:123456");
-    window.addEventListener("gamepadconnected", connectHandler);
-    window.addEventListener("gamepaddisconnected", disconnectHandler);
     setInterval(function () { sendMoves(websocket); }, 100)
 }
 
-window.onload = start;
+window.addEventListener("gamepadconnected", connectHandler);
