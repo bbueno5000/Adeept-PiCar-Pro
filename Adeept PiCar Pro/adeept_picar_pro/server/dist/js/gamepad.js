@@ -1,7 +1,5 @@
 "use strict";
 
-let gamepads;
-
 /**
  * 
  * @param {any} b
@@ -36,7 +34,7 @@ function sendMoves(websocket, gamepad) {
 
     if (buttonPressed(gamepad.buttons[0])) {
         console.log('up')
-        websocket.send(JSON.stringify('forward'));
+        websocket.send(JSON.stringify('Switch_1_on'));
     }
 }
 
