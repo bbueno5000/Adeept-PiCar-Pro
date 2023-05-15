@@ -17,7 +17,7 @@ function connectHandler(e) {
  * 
  * @param {any} websocket
  */
-function sendMoves(gamepad, websocket) {
+function sendMoves(websocket) {
 
     const gamepads = navigator.getGamepads()
     const gamepad = gamepads[0];
