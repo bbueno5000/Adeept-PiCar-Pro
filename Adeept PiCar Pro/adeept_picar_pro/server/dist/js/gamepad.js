@@ -28,6 +28,9 @@ function connectHandler(e) {
 function sendMoves(websocket) {
 
     const gamepads = navigator.getGamepads()
+    if (!gamepads) {
+        return;
+    }
     const gamepad = gamepads[0];
     if (buttonPressed(gamepad.buttons[0])) {
         console.log('up')
