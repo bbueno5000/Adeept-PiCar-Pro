@@ -49,7 +49,7 @@ function start() {
     var t = "ws://" + location.hostname + ":8888/echo";
     const websocket = new WebSocket(t);
     websocket.onopen = () => websocket.send("admin:123456");
-    window.addEventListener("gamepadconnected", connecthandler);
+    window.addEventListener("gamepadconnected", connectHandler);
     const gamepad = navigator.getGamepads()[0];
     if ("ongamepadconnected" in window) {
         setInterval(sendMoves(websocket, gamepad), 100);
