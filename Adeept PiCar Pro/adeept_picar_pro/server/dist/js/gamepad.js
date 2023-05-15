@@ -1,8 +1,5 @@
 "use strict";
 
-let interval;
-let websocket;
-
 /**
  * 
  * @param {any} b
@@ -14,19 +11,6 @@ function buttonPressed(b) {
         return b.pressed;
     }
     return b === 1.0;
-}
-
-/**
- * 
- */
-function pollGamepads() {
-
-    const gamepads = navigator.getGamepads();
-    for (const gamepad of gamepads) {
-        console.log("Gamepad connected at index ${gamepad.index}: ${gamepad.id}.");
-        setInterval(sendMoves(websocket, gamepad), 100);
-        clearInterval(interval);
-    }
 }
 
 /**
@@ -53,11 +37,13 @@ function sendMoves(websocket, gamepad) {
  */
 function start() {
     var t = "ws://" + location.hostname + ":8888/echo";
-    websocket = new WebSocket(t);
+    const websocket = new WebSocket(t);
     websocket.onopen = () => websocket.send("admin:123456");
     window.addEventListener("gamepadconnected", (e) => {
-        interval = setInterval(pollGamepads, 500);
+        console.log("Gamepad connected at index ${gamepad.index}: ${gamepad.id}.");
     });
+    const gamepad = navigator.getGamepads()[0];
+    setInterval(sendMoves(websocket, gamepad), 100);
 }
 
 window.onload = start;
