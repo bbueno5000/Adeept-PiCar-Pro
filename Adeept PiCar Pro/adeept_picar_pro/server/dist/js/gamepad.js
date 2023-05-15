@@ -15,18 +15,6 @@ function buttonPressed(b) {
 
 /**
  * 
- * @param {any} event
- */
-function connectHandler(event) {
-
-    console.log(
-        "Gamepad connected at index %d: %s",
-        event.gamepad.index, event.gamepad.id
-    );
-}
-
-/**
- * 
  * @param {any} websocket
  */
 function sendMoves(websocket, gamepad) {
@@ -49,11 +37,11 @@ function start() {
     var t = "ws://" + location.hostname + ":8888/echo";
     const websocket = new WebSocket(t);
     websocket.onopen = () => websocket.send("admin:123456");
-    window.addEventListener("gamepadconnected", connectHandler);
-    const gamepad = navigator.getGamepads()[0];
-    if ("ongamepadconnected" in window) {
+    window.ongamepadconnected = (event) => {
+        const gamepad = event.gamepad;
         setInterval(sendMoves(websocket, gamepad), 100);
-    }
+
+    };
 }
 
 window.onload = start;
