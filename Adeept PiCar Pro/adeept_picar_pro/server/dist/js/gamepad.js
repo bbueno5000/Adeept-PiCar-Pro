@@ -43,7 +43,7 @@ function start() {
         console.log("Gamepad connected at index %d: %s",
             e.gamepad.index, e.gamepad.id);
         setInterval(sendMoves(e.gamepad), 100);
-    });
+    }, false);
 }
 
 window.onload = start;
