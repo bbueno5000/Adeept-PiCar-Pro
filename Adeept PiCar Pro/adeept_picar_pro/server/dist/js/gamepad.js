@@ -1,4 +1,5 @@
 "use strict";
+let interval;
 
 /**
  * 
@@ -22,6 +23,7 @@ function pollGamepads() {
         const websocket = new WebSocket(t);
         websocket.onopen = () => websocket.send("admin:123456");
         setInterval(sendMoves(websocket, gamepad), 100);
+        clearInterval(interval);
     }
 }
 
@@ -49,7 +51,7 @@ function sendMoves(websocket, gamepad) {
 function start() {
 
     window.addEventListener("gamepadconnected", (e) => {
-        setInterval(pollGamepads, 500);
+        interval = setInterval(pollGamepads, 500);
     });
 }
 
