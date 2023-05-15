@@ -17,7 +17,7 @@ function pollGamepads() {
 
     const gamepads = navigator.getGamepads();
     for (const gamepad of gamepads) {
-        gamepadInfo.textContent = "Gamepad connected at index ${gamepad.index}: ${gamepad.id}.";
+        console.log("Gamepad connected at index ${gamepad.index}: ${gamepad.id}.");
         var t = "ws://" + location.hostname + ":8888/echo";
         const websocket = new WebSocket(t);
         websocket.onopen = () => websocket.send("admin:123456");
