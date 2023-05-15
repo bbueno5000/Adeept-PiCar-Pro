@@ -34,7 +34,7 @@ function sendMoves(websocket, gamepad) {
 
     if (buttonPressed(gamepad.buttons[0])) {
         console.log('up')
-        websocket.send(JSON.stringify('Switch_1_on'));
+        websocket.send(JSON.stringify('Switch_2_on'));
     }
 }
 
