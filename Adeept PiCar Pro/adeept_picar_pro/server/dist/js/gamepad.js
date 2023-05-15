@@ -32,14 +32,18 @@ function connectHandler(event, websocket) {
  */
 function sendMoves(websocket, gamepad) {
 
+    let instruct;
+
     if (buttonPressed(gamepad.buttons[0])) {
         console.log('up')
-        websocket.send(JSON.stringify('Switch_3_on'));
+        instruct = 'Switch_3_on';
     }
     else if (buttonPressed(gamepad.buttons[1])) {
         console.log('down')
-        websocket.send(JSON.stringify('Switch_3_off'));
+        instruct = 'Switch_3_off';
     }
+
+    websocket.send(JSON.stringify(instruct));
 }
 
 /**
