@@ -39,12 +39,11 @@ function start() {
 //    var t = "ws://" + location.hostname + ":8888/echo";
 //    const websocket = new WebSocket(t);
 //    websocket.onopen = () => websocket.send("admin:123456");
-    let gamepad;
     window.addEventListener("gamepadconnected", (e) => {
-        console.log("Gamepad connected at index ${e.index}: ${e.id}.");
-        gamepad = navigator.getGamepads()[0];
+        console.log("Gamepad connected at index %d: %s",
+            e.gamepad.index, e.gamepad.id);
+        setInterval(sendMoves(e.gamepad), 100);
     });
-    setInterval(sendMoves(gamepad), 100);
 }
 
 window.onload = start;
