@@ -1,4 +1,3 @@
-"use strict";
 
 function buttonPressed(b) {
     if (typeof b === "object") {
@@ -31,10 +30,6 @@ function sendMoves(websocket) {
     if (buttonPressed(gamepad.buttons[0])) {
         console.log('up')
         websocket.send(JSON.stringify('forward'));
-    }
-    else if (buttonPressed(gamepad.buttons[1])) {
-        console.log('down')
-        websocket.send(JSON.stringify('stop'));
     }
 }
 
