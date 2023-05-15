@@ -2,57 +2,37 @@
 
 /**
  * 
- * @param {any} b
- * @returns
- */
-function buttonPressed(b) {
-    if (typeof b === "object") {
-        return b.pressed;
-    }
-    return b === 1.0;
-}
-
-/**
- * 
  * @param {any} e
  */
 function connectHandler(e) {
+
     console.log(
         "Gamepad connected at index %d: %s",
         e.gamepad.index,
         e.gamepad.id
     );
-    start();
+    const gamepads = navigator.getGamepads()
+    const gamepad = gamepads[0];
+    var t = "ws://" + location.hostname + ":8888/echo";
+    const websocket = new WebSocket(t);
+    websocket.onopen = () => websocket.send("admin:123456");
+    setInterval(sendMoves(gamepad, websocket), 100)
 }
 
 /**
  * 
  * @param {any} websocket
  */
-function sendMoves(websocket) {
-    const gamepads = navigator.getGamepads()
-    if (!gamepads) {
-        return;
-    }
-    const gamepad = gamepads[0];
-    if (buttonPressed(gamepad.buttons[0])) {
+function sendMoves(gamepad, websocket) {
+
+    if (gamepad.buttons[0].pressed) {
         console.log('up')
         websocket.send(JSON.stringify('forward'));
     }
-    else if (buttonPressed(gamepad.buttons[1])) {
+    else if (gamepad.buttons[1].pressed) {
         console.log('down')
         websocket.send(JSON.stringify('stop'));
     }
-}
-
-/**
- * 
- */
-function start() {
-    var t = "ws://" + location.hostname + ":8888/echo";
-    const websocket = new WebSocket(t);
-    websocket.onopen = () => websocket.send("admin:123456");
-    setInterval(sendMoves(websocket), 100)
 }
 
 window.addEventListener("gamepadconnected", connectHandler);
