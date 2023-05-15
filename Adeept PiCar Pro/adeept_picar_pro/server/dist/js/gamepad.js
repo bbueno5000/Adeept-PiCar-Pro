@@ -42,7 +42,6 @@ function sendMoves(websocket, gamepad) {
         command = 'Switch_3_off';
     }
     websocket.send(JSON.stringify(command));
-    setInterval(sendMoves(websocket, gamepad), 100);
 }
 
 /**
@@ -53,9 +52,13 @@ function start() {
     var t = "ws://" + location.hostname + ":8888/echo";
     const websocket = new WebSocket(t);
     websocket.onopen = () => websocket.send("admin:123456");
-    window.addEventListener("gamepadconnected", (e) => {
-        connectHandler(e, websocket);
-    }, false);
+    const gamepad = navigator.getGamepads()[0];
+    if ("ongamepadconnected" in window) {
+        setInterval(sendMoves(websocket, gamepad), 100);
+    }
+//    window.addEventListener("gamepadconnected", (e) => {
+//        connectHandler(e, websocket);
+//    }, false);
 }
 
 window.onload = start;
