@@ -1,5 +1,7 @@
 "use strict";
 
+let gamepad;
+
 /**
  * 
  * @param {any} b
@@ -40,9 +42,9 @@ function start() {
     const websocket = new WebSocket(t);
     websocket.onopen = () => websocket.send("admin:123456");
     window.addEventListener("gamepadconnected", (e) => {
-        console.log("Gamepad connected at index ${gamepad.index}: ${gamepad.id}.");
+        console.log("Gamepad connected at index ${e.index}: ${e.id}.");
+        gamepad = navigator.getGamepads()[0];
     });
-    const gamepad = navigator.getGamepads()[0];
     setInterval(sendMoves(websocket, gamepad), 100);
 }
 
