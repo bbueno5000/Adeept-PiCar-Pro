@@ -1,7 +1,5 @@
 "use strict";
 
-let gamepad;
-
 /**
  * 
  * @param {any} b
@@ -20,7 +18,7 @@ function buttonPressed(b) {
  * @param {any} websocket
  * @param {any} gamepad
  */
-function sendMoves(websocket, gamepad) {
+function sendMoves(gamepad) {
 
     let command;
     if (buttonPressed(gamepad.buttons[0])) {
@@ -31,21 +29,22 @@ function sendMoves(websocket, gamepad) {
         console.log("down");
         command = "Switch_3_off";
     }
-    websocket.send(JSON.stringify(command));
+//    websocket.send(JSON.stringify(command));
 }
 
 /**
  * 
  */
 function start() {
-    var t = "ws://" + location.hostname + ":8888/echo";
-    const websocket = new WebSocket(t);
-    websocket.onopen = () => websocket.send("admin:123456");
+//    var t = "ws://" + location.hostname + ":8888/echo";
+//    const websocket = new WebSocket(t);
+//    websocket.onopen = () => websocket.send("admin:123456");
+    let gamepad;
     window.addEventListener("gamepadconnected", (e) => {
         console.log("Gamepad connected at index ${e.index}: ${e.id}.");
         gamepad = navigator.getGamepads()[0];
     });
-    setInterval(sendMoves(websocket, gamepad), 100);
+    setInterval(sendMoves(gamepad), 100);
 }
 
 window.onload = start;
