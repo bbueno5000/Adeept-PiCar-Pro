@@ -23,7 +23,7 @@ function connectHandler(event, websocket) {
         "Gamepad connected at index %d: %s",
         event.gamepad.index, event.gamepad.id
     );
-    setInterval(sendMoves(websocket, event.gamepad), 100);
+    sendMoves(websocket, event.gamepad);
 }
 
 /**
@@ -34,14 +34,15 @@ function sendMoves(websocket, gamepad) {
 
     let command;
     if (buttonPressed(gamepad.buttons[0])) {
-        console.log('up')
+        console.log('up');
         command = 'Switch_3_on';
     }
     else if (buttonPressed(gamepad.buttons[1])) {
-        console.log('down')
+        console.log('down');
         command = 'Switch_3_off';
     }
     websocket.send(JSON.stringify(command));
+    setInterval(sendMoves(websocket, gamepad), 100);
 }
 
 /**
