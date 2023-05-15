@@ -44,7 +44,7 @@ function start() {
     const websocket = new WebSocket(t);
     websocket.onopen = () => websocket.send("admin:123456");
     window.addEventListener("gamepadconnected", connectHandler);
-    setInterval(sendMoves(websocket), 100)
+    sendMoves(websocket)
 }
 
 window.onload = start;
