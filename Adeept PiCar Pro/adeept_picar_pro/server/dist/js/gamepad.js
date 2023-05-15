@@ -23,7 +23,7 @@ function connectHandler(event, websocket) {
         "Gamepad connected at index %d: %s",
         event.gamepad.index, event.gamepad.id
     );
-    sendMoves(websocket, event.gamepad)
+    setInterval(sendMoves(websocket, event.gamepad), 100)
 }
 
 /**
