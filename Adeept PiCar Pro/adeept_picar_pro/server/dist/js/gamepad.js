@@ -1,5 +1,7 @@
 "use strict";
 
+let gamepad;
+
 /**
  * 
  * @param {any} b
@@ -18,8 +20,9 @@ function buttonPressed(b) {
  * @param {any} websocket
  * @param {any} gamepad
  */
-function sendMoves(gamepad) {
+function sendMoves(gp) {
 
+    gamepad = gp;
     setInterval(update, 100)
 //    websocket.send(JSON.stringify(command));
 }
