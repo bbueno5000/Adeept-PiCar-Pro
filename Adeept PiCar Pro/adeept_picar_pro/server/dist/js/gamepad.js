@@ -15,22 +15,24 @@ function buttonPressed(b) {
 
 /**
  * 
- * @param {any} websocket
- * @param {any} gamepad
+ * @returns
  */
-//function sendMoves() {
+function sendMoves() {
 
-//    let command;
-//    if (buttonPressed(gamepad.buttons[0])) {
-//        console.log("up");
-//        command = "Switch_3_on";
-//    }
-//    else if (buttonPressed(gamepad.buttons[1])) {
-//        console.log("down");
-//        command = "Switch_3_off";
-//    }
-////    websocket.send(JSON.stringify(command));
-//}
+    setInterval(function () {
+        const gamepads = navigator.getGamepads();
+        if (!gamepads) {
+            return;
+        }
+        const gamepad = gamepads[0];
+        let command;
+        if (buttonPressed(gamepad.buttons[0])) {
+            console.log("up");
+            command = "Switch_3_on";
+        }
+//    websocket.send(JSON.stringify(command));
+    }, 100);
+}
 
 /**
  * 
@@ -40,21 +42,13 @@ function start() {
 //    var t = "ws://" + location.hostname + ":8888/echo";
 //    const websocket = new WebSocket(t);
 //    websocket.onopen = () => websocket.send("admin:123456");
-    let gamepad;
     window.addEventListener("gamepadconnected", (e) => {
         console.log(
             "Gamepad connected at index %d: %s",
             e.gamepad.index, e.gamepad.id
         );
-        gamepad = e.gamepad;
     });
-    setInterval(function () {
-        let command;
-        if (buttonPressed(gamepad.buttons[0])) {
-            console.log("up");
-            command = "Switch_3_on";
-        }
-    }, 100);
+    sendMoves();
 }
 
 window.onload = start;
