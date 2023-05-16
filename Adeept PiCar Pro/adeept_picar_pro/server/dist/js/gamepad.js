@@ -26,19 +26,19 @@ function sendMoves(websocket) {
         }
         const gamepad = gamepads[0];
         let command;
-        if (gamepad.axes[2] < 0) {
+        if (gamepad.axes[2] < -0.5) {
             console.log("1");
             command = "left";
         }
-        if (gamepad.axes[2] > 0) {
+        if (gamepad.axes[2] > 0.5) {
             console.log("1");
             command = "right";
         }
-        if (gamepad.axes[3] < 0) {
+        if (gamepad.axes[3] < -0.5) {
             console.log("1");
             command = "forward";
         }
-        if (gamepad.axes[3] > 0) {
+        if (gamepad.axes[3] > 0.5) {
             console.log("1");
             command = "backward";
         }
