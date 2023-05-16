@@ -20,6 +20,12 @@ function buttonPressed(b) {
  */
 function sendMoves(gamepad) {
 
+    setInterval(sendMoves, 100)
+//    websocket.send(JSON.stringify(command));
+}
+
+function update() {
+
     let command;
     if (buttonPressed(gamepad.buttons[0])) {
         console.log("up");
@@ -29,8 +35,6 @@ function sendMoves(gamepad) {
         console.log("down");
         command = "Switch_3_off";
     }
-    setInterval(sendMoves(gamepad), 1000)
-//    websocket.send(JSON.stringify(command));
 }
 
 /**
