@@ -42,8 +42,18 @@ function start() {
     window.addEventListener("gamepadconnected", (e) => {
         console.log("Gamepad connected at index %d: %s",
             e.gamepad.index, e.gamepad.id);
-        setInterval(sendMoves(e.gamepad), 100);
-    }, false);
+        setInterval(function () {
+            let command;
+            if (buttonPressed(gamepad.buttons[0])) {
+                console.log("up");
+                command = "Switch_3_on";
+            }
+            else if (buttonPressed(gamepad.buttons[1])) {
+                console.log("down");
+                command = "Switch_3_off";
+            }
+        }, 100);
+    });
 }
 
 window.onload = start;
