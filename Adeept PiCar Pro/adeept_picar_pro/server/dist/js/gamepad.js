@@ -28,10 +28,18 @@ function sendMoves(websocket) {
         let command;
         if (buttonPressed(gamepad.buttons[0])) {
             console.log("A");
-            command = "Switch_3_on";
+            command = "Switch_2_on";
         }
         if (buttonPressed(gamepad.buttons[1])) {
             console.log("B");
+            command = "Switch_2_off";
+        }
+        if (buttonPressed(gamepad.buttons[2])) {
+            console.log("X");
+            command = "Switch_3_on";
+        }
+        if (buttonPressed(gamepad.buttons[3])) {
+            console.log("Y");
             command = "Switch_3_off";
         }
         websocket.send(JSON.stringify(command));
