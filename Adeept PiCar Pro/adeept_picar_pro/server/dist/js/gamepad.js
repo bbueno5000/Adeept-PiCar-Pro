@@ -29,7 +29,7 @@ function sendMoves(gamepad) {
         console.log("down");
         command = "Switch_3_off";
     }
-    setInterval(sendMoves, 100);
+    setInterval(sendMoves(gamepad), 100);
 //    websocket.send(JSON.stringify(command));
 }
 
