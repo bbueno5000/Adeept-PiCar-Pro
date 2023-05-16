@@ -27,8 +27,12 @@ function sendMoves() {
         const gamepad = gamepads[0];
         let command;
         if (buttonPressed(gamepad.buttons[0])) {
-            console.log("up");
+            console.log("A");
             command = "Switch_3_on";
+        }
+        if (buttonPressed(gamepad.buttons[1])) {
+            console.log("B");
+            command = "Switch_3_off";
         }
 //    websocket.send(JSON.stringify(command));
     }, 100);
