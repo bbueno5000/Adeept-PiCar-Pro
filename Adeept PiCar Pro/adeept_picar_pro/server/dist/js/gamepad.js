@@ -41,12 +41,14 @@ function sendMoves() {
     if (buttonPressed(gamepad.buttons[0])) {
         console.log("up");
         command = "Switch_3_on";
+        clearInterval(interval);
     }
     else if (buttonPressed(gamepad.buttons[1])) {
         console.log("down");
         command = "Switch_3_off";
+        clearInterval(interval);
     }
-    clearInterval(interval);
+    interval = setInterval(sendMoves, 100);
 //    websocket.send(JSON.stringify(command));
 }
 
