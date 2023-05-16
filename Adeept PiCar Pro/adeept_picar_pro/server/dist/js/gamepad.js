@@ -20,7 +20,7 @@ function buttonPressed(b) {
  */
 function sendMoves(gamepad) {
 
-    setInterval(sendMoves, 100)
+    setInterval(update, 100)
 //    websocket.send(JSON.stringify(command));
 }
 
