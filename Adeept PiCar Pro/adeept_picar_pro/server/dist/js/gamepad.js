@@ -24,13 +24,12 @@ function sendMoves(gamepad) {
     if (buttonPressed(gamepad.buttons[0])) {
         console.log("up");
         command = "Switch_3_on";
-        sendMoves(gamepad);
     }
     else if (buttonPressed(gamepad.buttons[1])) {
         console.log("down");
         command = "Switch_3_off";
-        sendMoves(gamepad);
     }
+    setInterval(sendMoves(gamepad), 1000)
 //    websocket.send(JSON.stringify(command));
 }
 
@@ -38,6 +37,7 @@ function sendMoves(gamepad) {
  * 
  */
 function start() {
+
 //    var t = "ws://" + location.hostname + ":8888/echo";
 //    const websocket = new WebSocket(t);
 //    websocket.onopen = () => websocket.send("admin:123456");
