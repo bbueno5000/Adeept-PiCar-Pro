@@ -44,11 +44,11 @@ function start() {
             e.gamepad.index, e.gamepad.id);
         setInterval(function () {
             let command;
-            if (buttonPressed(gamepad.buttons[0])) {
+            if (buttonPressed(e.gamepad.buttons[0])) {
                 console.log("up");
                 command = "Switch_3_on";
             }
-            else if (buttonPressed(gamepad.buttons[1])) {
+            else if (buttonPressed(e.gamepad.buttons[1])) {
                 console.log("down");
                 command = "Switch_3_off";
             }
