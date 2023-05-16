@@ -24,7 +24,7 @@ function buttonPressed(b) {
 function sendMoves(gp) {
 
     gamepad = gp;
-    interval = setInterval(update, 1000)
+    interval = setInterval(update, 100)
 //    websocket.send(JSON.stringify(command));
 }
 
