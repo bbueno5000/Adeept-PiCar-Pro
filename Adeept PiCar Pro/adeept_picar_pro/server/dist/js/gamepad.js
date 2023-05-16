@@ -1,6 +1,7 @@
 "use strict";
 
 let gamepad;
+let interval;
 
 /**
  * 
@@ -23,7 +24,7 @@ function buttonPressed(b) {
 function sendMoves(gp) {
 
     gamepad = gp;
-    setInterval(update, 100)
+    interval = setInterval(update, 1000)
 //    websocket.send(JSON.stringify(command));
 }
 
@@ -38,6 +39,7 @@ function update() {
         console.log("down");
         command = "Switch_3_off";
     }
+    clearInterval(interval);
 }
 
 /**
