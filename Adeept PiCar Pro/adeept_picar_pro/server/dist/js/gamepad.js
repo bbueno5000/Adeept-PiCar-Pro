@@ -26,6 +26,22 @@ function sendMoves(websocket) {
         }
         const gamepad = gamepads[0];
         let command;
+        if (gamepad.axes[2] < 0) {
+            console.log("1");
+            command = "left";
+        }
+        if (gamepad.axes[2] > 0) {
+            console.log("1");
+            command = "right";
+        }
+        if (gamepad.axes[3] < 0) {
+            console.log("1");
+            command = "forward";
+        }
+        if (gamepad.axes[3] > 0) {
+            console.log("1");
+            command = "backward";
+        }
         if (buttonPressed(gamepad.buttons[0])) {
             console.log("A");
             command = "Switch_2_on";
