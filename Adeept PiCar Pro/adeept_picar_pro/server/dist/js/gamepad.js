@@ -26,6 +26,7 @@ function sendMoves(websocket) {
         }
         const gamepad = gamepads[0];
         let command;
+        console.log(gamepad.axes[2])
         if (gamepad.axes[2] < -0.5) {
             console.log("1");
             command = "left";
