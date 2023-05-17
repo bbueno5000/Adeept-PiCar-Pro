@@ -42,6 +42,22 @@ function sendMoves(websocket) {
             console.log("1");
             command = "backward";
         }
+        if (gamepad.axes[2] < -0.5) {
+            console.log("2");
+            command = "lookleft";
+        }
+        if (gamepad.axes[2] > 0.5) {
+            console.log("2");
+            command = "lookright";
+        }
+        if (gamepad.axes[3] < -0.5) {
+            console.log("2");
+            command = "armup";
+        }
+        if (gamepad.axes[3] > 0.5) {
+            console.log("2");
+            command = "armdown";
+        }
         if (buttonPressed(gamepad.buttons[0])) {
             console.log("A");
             command = "Switch_2_on";
